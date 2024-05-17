@@ -1,0 +1,73 @@
+#Vector Capsule VAE
+model:
+  target: src.models.cevae.CEVAE
+  params:
+    discriminator: False
+    ckpt_path: /media/TBData/Rita/Taming_Transformer_results_images/logs_2/2022-04-18T13-18-05_imagenet_vcgan/checkpoints/last.ckpt
+    embed_dim: 256
+    ddconfig:
+      double_z: False
+      z_channels: 256
+      resolution: 256
+      in_channels: 3
+      out_ch: 3
+      ch: 128
+      ch_mult: [ 1,1,2,2,4]
+      num_res_blocks: 2
+      attn_resolutions: [16]
+      dropout: 0.0
+
+    lossconfig:
+      target: src.modules.losses.combined.ReconstructionLossWithDiscriminator
+      params:
+        pixelloss_weight: 10.0
+        perceptual_weight: 1.0
+        gdl_loss_weight: 0.0
+        color_loss_weight: 0.0
+        ssim_loss_weight: 1.0
+        disc_enabled: False
+
+    optimizer:
+      base_learning_rate: 4.5e-6
+
+lightning:
+  trainer:
+    max_epochs: 600
+    accelerator: gpu
+    devices: 4
+    check_val_every_n_epoch: 10
+
+
+data:
+  target: src.data.dataset_wrapper.DataModuleFromConfig
+  params:
+    dataset_name: "LSUI"
+    train_batch_size: 8
+    val_batch_size: 32
+    num_workers: 8
+    train:
+      target: src.data.image_enhancement.DatasetTrainFromImageFileList
+      params:
+        training_images_list_file: data/LSUI_train_input_3879.txt
+        target_images_list_file: data/LSUI_train_target_3879.txt
+        random_crop: True
+        random_flip: True
+        color_jitter:
+          brightness: [0.9, 1.1]
+          contrast: [0.9, 1.1]
+          saturation: [0.9, 1.1]
+          hue: [-0.02, 0.02]
+        max_size: 288
+        size: 256
+    validation:
+      target: src.data.image_enhancement.DatasetTestFromImageFileList
+      params:
+        test_images_list_file: data/LSUI_val_input_400.txt
+        test_target_images_list_file: data/LSUI_val_target_400.txt
+        size: 256
+    test:
+      target: src.data.image_enhancement.DatasetTestFromImageFileList
+      params:
+        test_images_list_file: data/LSUI_val_input_400.txt
+        test_target_images_list_file: data/LSUI_val_target_400.txt
+        size: 256
