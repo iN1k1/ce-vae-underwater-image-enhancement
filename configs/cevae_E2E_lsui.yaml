@@ -48,8 +48,8 @@ data:
     train:
       target: src.data.image_enhancement.DatasetTrainFromImageFileList
       params:
-        training_images_list_file: data/LSUI_train_input_3879.txt
-        target_images_list_file: data/LSUI_train_target_3879.txt
+        training_images_list_file: data/LSUI_train_input.txt
+        target_images_list_file: data/LSUI_train_target.txt
         random_crop: True
         random_flip: True
         color_jitter:
@@ -62,12 +62,12 @@ data:
     validation:
       target: src.data.image_enhancement.DatasetTestFromImageFileList
       params:
-        test_images_list_file: data/LSUI_val_input_400.txt
-        test_target_images_list_file: data/LSUI_val_target_400.txt
+        test_images_list_file: data/LSUI_val_input.txt
+        test_target_images_list_file: data/LSUI_val_target.txt
         size: 256
     test:
       target: src.data.image_enhancement.DatasetTestFromImageFileList
       params:
-        test_images_list_file: data/LSUI_val_input_400.txt
-        test_target_images_list_file: data/LSUI_val_target_400.txt
+        test_images_list_file: data/LSUI_val_input.txt
+        test_target_images_list_file: data/LSUI_val_target.txt
         size: 256

@@ -26,6 +26,8 @@ performance compared to existing methods, achieving about +1.4dB gain on the cha
 Additionally, our approach significantly reduces the amount of space needed for data storage, making it three times more
 efficient.
 
+## TL;DR;
+
 ![Pipeline Image](assets/cevae-pipeline.png)
 
 ## Installation
@@ -58,27 +60,41 @@ python main.py --config [path of config]
 
 Examples of config files can be found in the `configs` folder.
 To train our model with the default configuration on the LSUI dataset, follow these step:
-1. Generate the txt training and validation files for the LSUI dataset by running the following command:
-   ```sh
-   sh scripts/generate_dataset_txt.sh [path to LSUI dataset]
+1. Generate the txt training and validation files for the LSUI dataset. Assuming your local system has the following structure 
    ```
+   /home/user/data/LSUI
+   ├── train
+   │   ├── GT
+   │   └── input
+   └── val
+       ├── GT
+       └── input
+   ```
+   you should first run:
+      ```sh
+      bash scripts/generate_dataset_txt.sh /home/user/data/LSUI/ 
+      ```
+   to generate the training and validation paired input text files `(LSUI_train_input.txt, LSUI_train_target.txt)` and `(LSUI_val_input.txt, LSUI_val_target.txt)`.    
+   These are the "default" files that we have in the LSUI training configs `./configs/cevae_*_lsui.yaml`
 
-2. Train the CE-VAE model without the
+3. Train the CE-VAE model without the
 discriminator as:
    ```sh
    python main.py --config configs/cevae_E2E_lsui.yaml
    ```
-3. then, once you have the checkpoints for the model trained without the discriminator, you can need to edit the `ckpt_path` entry in the `configs/cevae_GAN_lsui.yaml` to point it to your local pth file and then run the following command to finetune the model with the discriminator:
+   **Training logs, containing checkpoints, and samples of generated images are in `./training_logs`**
+
+4. Once you have the checkpoints for the model trained without the discriminator, you can need to edit the `ckpt_path` entry in the `configs/cevae_GAN_lsui.yaml` to point it to your local pth file and then run the following command to finetune the model with the discriminator:
    ```sh
    python main.py --config configs/cevae_GAN_lsui.yaml
    ```
 
-### Evaluation
+### Underwater Image Enanchement
 
-To evaluate the model and enhance images, run:
+To evaluate the model on a folder, run:
 
 ```sh
-python test.py --config [path of config] --checkpoint [path of checkpoint] --dataset [folder path containing images for which to perform the image enhancement] --output-path [path of output folder where enhanced images will be generated]
+python test.py --config [path of config] --checkpoint [path of checkpoint] --data-path [folder path containing images to enhance] --output-path [path of output folder where enhanced images will be saved]
 ```
 
 ## Results

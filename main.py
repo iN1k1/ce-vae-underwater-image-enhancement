@@ -32,13 +32,13 @@ def get_parser(**parser_kwargs):
     parser = LightningArgumentParser(**parser_kwargs, add_help=False, parse_as_dict=True)
     parser.add_lightning_class_args(L.Trainer, nested_key='trainer')
 
-    parser.add_argument("-n", "--name", type=str, const=True, default="", nargs="?", help="postfix for logdir")
+    parser.add_argument("-n", "--name", type=str, const=True, default="", nargs="?", help="postfix for logdir (default: empty)")
     parser.add_argument("-r", "--resume", type=str, const=True, default="", nargs="?",
                         help="resume from logdir or checkpoint in logdir", )
     parser.add_argument("-cfg", "--config", type=str, help="path to config")
     parser.add_argument("-p", "--project", help="name of new or path to existing project")
-    parser.add_argument("-s", "--seed", type=int, default=23, help="seed for seed_everything")
-    parser.add_argument("-f", "--postfix", type=str, default="", help="post-postfix for default name")
+    parser.add_argument("-s", "--seed", type=int, default=23, help="seed for seed_everything (default: 23)")
+    parser.add_argument("-f", "--postfix", type=str, default="", help="post-postfix for default name (default: empty)")
 
     return parser
 
@@ -242,7 +242,7 @@ if __name__ == "__main__":
         else:
             name = ""
         nowname = now + name + opt.postfix
-        logdir = os.path.join("/media/TBData2/vcgan_logs", nowname)
+        logdir = os.path.join("./training_logs", nowname)
 
     ckptdir = os.path.join(logdir, "checkpoints")
     cfgdir = os.path.join(logdir, "configs")
