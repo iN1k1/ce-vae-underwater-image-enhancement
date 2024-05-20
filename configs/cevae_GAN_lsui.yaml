@@ -1,7 +1,7 @@
 model:
   target: src.models.cevae.CEVAE
   params:
-    ckpt_path: /media/TBData2/vcgan_logs/2024-03-15T17-01-38_enhancement_vcgan_E2E_lsui/checkpoints/epoch=0589.ckpt
+    ckpt_path: [your best checkpoint path resulting from the execution of cevae_E2E_lsui.yaml ].ckpt
     embed_dim: 256
     ddconfig:
       double_z: False

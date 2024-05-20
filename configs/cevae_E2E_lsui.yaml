@@ -3,7 +3,7 @@ model:
   target: src.models.cevae.CEVAE
   params:
     discriminator: False
-    ckpt_path: /media/TBData/Rita/Taming_Transformer_results_images/logs_2/2022-04-18T13-18-05_imagenet_vcgan/checkpoints/last.ckpt
+    ckpt_path: data/imagenet-pre-trained-cevae.ckpt
     embed_dim: 256
     ddconfig:
       double_z: False
