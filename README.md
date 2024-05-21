@@ -78,7 +78,9 @@ To train our model with the default configuration on the LSUI dataset, follow th
    These are the "default" files that we have in the LSUI training configs `./configs/cevae_*_lsui.yaml`
 
 3. Train the CE-VAE model without the
-discriminator as:
+discriminator.
+   Start by downloading the ImageNet-pretrained model from [here](https://uniudamce-my.sharepoint.com/:u:/g/personal/niki_martinel_uniud_it/ESe3q_vE9EtJur7Ioda8UMoBS-P8jCZdlXbLO3gp-XUKQg?e=RBpa8x) and save it into the `data` folder. 
+   Then exectute
    ```sh
    python main.py --config configs/cevae_E2E_lsui.yaml
    ```
