@@ -3,7 +3,7 @@
 ![Teaser Image](assets/teaser.png)
 
 This repository contains the code accompanying the scientific paper "Capsule Enhanced Variational AutoEncoder for
-Underwater Image Reconstruction" by Rita Pucci and Niki Martinel. The paper is available on [arXiv](link).
+Underwater Image Reconstruction" by Rita Pucci and Niki Martinel. The paper is available on [arXiv](https://arxiv.org/abs/2406.01294).
 
 ## Description
 
@@ -129,10 +129,12 @@ If you use this code in your research, please cite our paper:
 
 ```bibtex
 @article{pucci2024capsule,
-  title={Capsule Enhanced Variational AutoEncoder for Underwater Image Reconstruction},
-  author={Pucci, Rita and Martinel, Niki},
-  journal={arXiv preprint arXiv:[arxiv number]},
-  year={2024}
+      title={Capsule Enhanced Variational AutoEncoder for Underwater Image Reconstruction}, 
+      author={Rita Pucci and Niki Martinel},
+      year={2024},
+      eprint={2406.01294},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
