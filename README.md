@@ -132,8 +132,8 @@ If you use this code in your research, please cite our paper:
       title={CE-VAE: Capsule Enhanced Variational AutoEncoder for Underwater Image Reconstruction}, 
       author={Rita Pucci and Niki Martinel},
       year={2024},
-  month        = {Feb},
-  booktitle    = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+      month={Feb},
+      booktitle={IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
 }
 ```
 
