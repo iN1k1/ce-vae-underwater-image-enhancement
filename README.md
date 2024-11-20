@@ -129,12 +129,11 @@ If you use this code in your research, please cite our paper:
 
 ```bibtex
 @article{pucci2024capsule,
-      title={Capsule Enhanced Variational AutoEncoder for Underwater Image Reconstruction}, 
+      title={CE-VAE: Capsule Enhanced Variational AutoEncoder for Underwater Image Reconstruction}, 
       author={Rita Pucci and Niki Martinel},
       year={2024},
-      eprint={2406.01294},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+  month        = {Feb},
+  booktitle    = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
 }
 ```
 
