@@ -1,4 +1,4 @@
-# Capsule Enhanced Variational AutoEncoder for Underwater Image Reconstruction
+# CE-VAE: Capsule Enhanced Variational AutoEncoder for Underwater Image Enhancement
 
 ![Teaser Image](assets/teaser.png)
 
@@ -34,7 +34,7 @@ efficient.
 
 To set up the environment and install the required packages, follow these steps:
 
-1. Create a Python 3.10 virtual environment:
+1. Create a virtual environment:
    ```sh
    conda create -n cevae python=3.11
    conda activate cevae
@@ -125,7 +125,7 @@ This project is licensed under the terms specified in the `license.txt` file.
 
 ## Citation
 
-If you use this code in your research, please cite our paper:
+If you find this code useful or use it in your research, please cite our paper! Thx!
 
 ```bibtex
 @article{pucci2024capsule,
