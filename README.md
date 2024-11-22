@@ -7,24 +7,12 @@ Underwater Image Reconstruction" by Rita Pucci and Niki Martinel. The paper is a
 
 ## Description
 
-Underwater image analysis is crucial for marine monitoring but presents significant challenges such as degraded visual
-quality and limitations in capturing high-resolution images due to hardware constraints. Traditional methods struggle to
-address these issues effectively.
+Unmanned underwater image analysis for marine monitoring faces two key challenges: (i) degraded image quality due to light attenuation and (ii) hardware storage constraints limiting high-resolution image collection.
+Existing methods primarily address image enhancement with approaches that hinge on storing the full-size input.
 
-We introduce a novel architecture that jointly tackles both problems by drawing inspiration from the discrete features
-quantization approach of Vector Quantized Variational Autoencoder (VQ-VAE). Our model combines an encoding network,
-which compresses the input into a latent representation, with two independent decoding networks. These networks enhance
-and reconstruct images using only the latent representation, with one decoder focusing on spatial information and the
-other leveraging capsules to capture information about entities in the image.
+In contrast, we introduce the Capsule Enhanced Variational AutoEncoder (CE-VAE), a novel architecture designed to efficiently compress and enhance degraded underwater images. Our attention-aware image encoder can project the input image onto a latent space representation while being able to run online on a remote device. The only information that needs to be stored on the device or sent to a beacon is a compressed representation. There is a dual-decoder module that performs offline, full-size enhanced image generation. One branch reconstructs spatial details from the compressed latent space, while the second branch utilizes a capsule-clustering layer to capture entity-level structures and complex spatial relationships. This parallel decoding strategy enables the model to balance fine-detail preservation with context-aware enhancements.
 
-This approach not only improves the visual quality of underwater images but also overcomes the differentiability issues
-of VQ-VAE, allowing for end-to-end training without special optimization tricks. Our capsule layers perform feature
-quantization in a fully differentiable manner.
-
-Through extensive quantitative and qualitative evaluations on six benchmark datasets, our method demonstrates superior
-performance compared to existing methods, achieving about +1.4dB gain on the challenging LSUI Test-L400 dataset.
-Additionally, our approach significantly reduces the amount of space needed for data storage, making it three times more
-efficient.
+CE-VAE achieves state-of-the-art performance in underwater image enhancement on six benchmark datasets, providing up to $3\times$ higher compression efficiency than existing approaches.
 
 ## TL;DR;
 
@@ -59,7 +47,7 @@ python main.py --config [path of config]
 #### LSUI training config example
 
 Examples of config files can be found in the `configs` folder.
-To train our model with the default configuration on the LSUI dataset, follow these step:
+To train our model with the default configuration on the LSUI dataset, follow these steps:
 1. Generate the txt training and validation files for the LSUI dataset. Assuming your local system has the following structure 
    ```
    /home/user/data/LSUI
@@ -80,7 +68,7 @@ To train our model with the default configuration on the LSUI dataset, follow th
 3. Train the CE-VAE model without the
 discriminator.
    Start by downloading the ImageNet-pretrained model from [here](https://uniudamce-my.sharepoint.com/:u:/g/personal/niki_martinel_uniud_it/ESe3q_vE9EtJur7Ioda8UMoBS-P8jCZdlXbLO3gp-XUKQg?e=RBpa8x) and save it into the `data` folder. 
-   Then exectute
+   Then execute
    ```sh
    python main.py --config configs/cevae_E2E_lsui.yaml
    ```
@@ -91,7 +79,7 @@ discriminator.
    python main.py --config configs/cevae_GAN_lsui.yaml
    ```
 
-### Underwater Image Enanchement
+### Underwater Image Enhancement
 
 To evaluate the model on a folder, run:
 
@@ -101,7 +89,7 @@ python test.py --config [path of config] --checkpoint [path of checkpoint] --dat
 
 ## Results
 
-### Quantitative comparison on the LSUI-L400 dataset
+### Quantitative comparison of the LSUI-L400 dataset
 
 | Method                                               | PSNR ↑    | SSIM ↑   | LPIPS ↓  |
 |------------------------------------------------------|-----------|----------|----------|
@@ -115,7 +103,7 @@ python test.py --config [path of config] --checkpoint [path of checkpoint] --dat
 | Spectroformer         | 20.09     | 0.79     | 0.32     |
 | **CE-VAE (Our Method)**                              | **24.49** | **0.84** | **0.26** |
 
-### Qualitative comparison on the LSUI-L400 dataset
+### Qualitative comparison of the LSUI-L400 dataset
 
 ![LSUIResults Image](assets/lsui_l400_psnr.png)
 
@@ -125,7 +113,7 @@ This project is licensed under the terms specified in the `license.txt` file.
 
 ## Citation
 
-If you find this code useful or use it in your research, please cite our paper! Thx!
+If you find this code useful or use it in your research, please cite our paper! Thx :)
 
 ```bibtex
 @article{pucci2024capsule,
