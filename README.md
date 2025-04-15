@@ -86,8 +86,7 @@ To evaluate the model on a folder, run:
 python test.py --config [path of config] --checkpoint [path of checkpoint] --data-path [folder path containing images to enhance] --output-path [path of output folder where enhanced images will be saved]
 ```
 
-If you do not want to train, [here](https://uniudamce-my.sharepoint.com/:u:/g/personal/niki_martinel_uniud_it/ESe3q_vE9EtJur7Ioda8UMoBS-P8jCZdlXbLO3gp-XUKQg?e=RBpa8x](https://uniudamce-my.sharepoint.com/:u:/g/personal/niki_martinel_uniud_it/ERyTb1QQvARBuU6GL_-M2egBlndUS6Xi0LLPxEP2AI8qxg?e=woNd7e
-) you can download the LSUI pre-trained model checkpoint. So just replace [path of checkpoint] with the path of the downloaded file, then run using the LSUI config. 
+If you do not want to train, [here](https://uniudamce-my.sharepoint.com/:u:/g/personal/niki_martinel_uniud_it/ERyTb1QQvARBuU6GL_-M2egBlndUS6Xi0LLPxEP2AI8qxg?e=RMQMQu) you can download the LSUI pre-trained model checkpoint. So just replace [path of checkpoint] with the path of the downloaded file, then run using the LSUI config. 
 
 
 ## Results
